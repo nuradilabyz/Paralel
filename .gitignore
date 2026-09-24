@@ -5,3 +5,5 @@ __pycache__/
 tmp/
 openmp_python_labs/report/rendered/
 openmp_python_labs/report/*_qa*/
+
+.DS_Store
