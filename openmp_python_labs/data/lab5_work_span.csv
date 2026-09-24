@@ -1,0 +1,2 @@
+array_size,measured_t1_seconds,work_model,span_model,model_parallelism,workers
+20000,0.000696,285754.248,39999.000,7.144035,8

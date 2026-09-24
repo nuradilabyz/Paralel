@@ -1,0 +1,7 @@
+.venv/
+.firecrawl/
+__pycache__/
+*.pyc
+tmp/
+openmp_python_labs/report/rendered/
+openmp_python_labs/report/*_qa*/

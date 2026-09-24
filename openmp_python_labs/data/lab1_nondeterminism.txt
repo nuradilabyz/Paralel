@@ -1,0 +1,59 @@
+Run 1
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076101
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076100
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076099
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076098
+
+Run 2
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076103
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076105
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076104
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076102
+
+Run 3
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076106
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076109
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076107
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076108
+
+Run 4
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076113
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076110
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076111
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076112
+
+Run 5
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076114
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076115
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076116
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076117
+
+Run 6
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076118
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076119
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076120
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076121
+
+Run 7
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076123
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076122
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076125
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076124
+
+Run 8
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076129
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076126
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076127
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076128
+
+Run 9
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076132
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076131
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076133
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076130
+
+Run 10
+[Worker] Logical Rank: 3 of 4 | Native OS TID: 3076137
+[Worker] Logical Rank: 1 of 4 | Native OS TID: 3076135
+[Worker] Logical Rank: 2 of 4 | Native OS TID: 3076136
+[Master] Logical Rank: 0 of 4 | Native OS TID: 3076134
