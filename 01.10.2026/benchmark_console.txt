@@ -1,0 +1,41 @@
+Compiling and warming up every kernel and precision...
+{
+  "environment": "Automated Linux workspace; not the student laptop",
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "operating_system": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "python_version": "3.12.14",
+  "numpy_version": "2.5.3",
+  "numba_version": "0.68.0",
+  "matplotlib_version": "3.11.2",
+  "logical_cpus_visible": 9,
+  "affinity_cpus": 9,
+  "cpu_quota_cores": 8.0,
+  "numba_max_threads": 9,
+  "threading_layer": "omp"
+}
+
+Challenge 1: Monte Carlo pi
+   1 threads: 2.180438 s; pi=3.1413147
+   2 threads: 1.451848 s; pi=3.1413354
+   4 threads: 0.777060 s; pi=3.1416089
+   8 threads: 0.418336 s; pi=3.1415940
+   9 threads: 0.377836 s; pi=3.1417393
+
+Challenge 2: Mandelbrot
+  rows: 1.272772 s
+  cols: 1.300855 s
+
+Challenge 3: heat diffusion
+  float64  1 threads: 0.473171 s; 1426.54 Mcells/s
+  float64  2 threads: 0.240758 s; 2803.65 Mcells/s
+  float64  4 threads: 0.107021 s; 6307.20 Mcells/s
+  float64  8 threads: 0.087997 s; 7670.71 Mcells/s
+  float64  9 threads: 0.082922 s; 8140.18 Mcells/s
+  float32  1 threads: 0.234506 s; 2878.39 Mcells/s
+  float32  2 threads: 0.152896 s; 4414.75 Mcells/s
+  float32  4 threads: 0.112266 s; 6012.48 Mcells/s
+  float32  8 threads: 0.074270 s; 9088.50 Mcells/s
+  float32  9 threads: 0.067184 s; 10047.05 Mcells/s
+
+All numerical checks PASSED.
+Saved report, CSV, JSON, and Mandelbrot image to: /workspace/scratch/028ffe1b3fc7/Parallel_Programming/01.10.2026
