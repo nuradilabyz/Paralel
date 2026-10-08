@@ -1,0 +1,13 @@
+============================================================
+RUNNING CUDA LAB 02 AUTONOMOUS VERIFICATION
+============================================================
+Enter your Student ID: [PASS] Task 2 (1D Stencil & Clamping)
+[PASS] Task 3 (Grid-Stride Scaling)
+[PASS] Task 4 (2D Sobel Horizontal)
+
+============================================================
+VERIFICATION SUCCESSFUL
+OFFICIAL SUBMISSION TOKEN: EC7BDC7A66732072FE14
+============================================================
+Copy this token directly into your README.md.
+
