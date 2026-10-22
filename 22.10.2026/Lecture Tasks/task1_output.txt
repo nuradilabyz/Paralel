@@ -1,0 +1,13 @@
+TASK 1 - Hardware probe and serial baseline
+Student ID: 230103188
+OS: Mac OS X 26.5.1
+Architecture: aarch64
+CPU: Apple M2
+Logical cores: 8
+Java: 20.0.2
+Elements: 20000000; type: double (float64); application workers: 1
+Sum: 10002912.839487657000
+Population standard deviation (ddof=0): 0.288690653950
+Array generation: 56.833000 ms
+Serial computation: 37.884375 ms
+Total generation + computation: 94.718583 ms
