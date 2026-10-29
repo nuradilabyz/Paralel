@@ -1,0 +1,344 @@
+{
+  "student_id": "230103188",
+  "salted_N": 1408,
+  "steps": 128,
+  "trials_per_configuration": 3,
+  "worker_counts": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "start_method": "spawn",
+  "numpy_version": "2.3.5",
+  "kernel": "C_new[i,j] = .2*(C[i,j]+C[i-1,j]+C[i+1,j]+C[i,j-1]+C[i,j+1]); zero boundary",
+  "timing": "Parent perf_counter_ns around start/end barriers. Includes every timestep barrier. Excludes allocation, process spawn, warmup, result copy and validation; setup time recorded separately.",
+  "warmup": "Each worker exercises the same ufuncs on a separate 16x16 array before ready/start.",
+  "validation": "Every full output from every trial compared to its serial reference (atol=1e-12,rtol=0), boundaries checked, salted rounded6 digest checked. Strong base reference and maximum-P output persisted as .npy; large weak arrays are not persisted.",
+  "initialization": "np.random.default_rng(salted_seed + grid_dimension).random float64, zero boundaries",
+  "weak_formula_note": "Each mode uses its own measured P=1 median. The PDF's P*W1*T1/(WP*TP) is approximately weak efficiency when WP=P*W1; throughput speedup is (WP/W1)*(T1/TP). Exact interior-cell work is used.",
+  "affinity": "No CPU pinning; OS chooses placement; physical core count does not imply equal-performance cores.",
+  "amdahl_fit": {
+    "model": "T(P)/T(1) = s + (1-s)/P; least squares on normalized runtimes",
+    "serial_fraction_unconstrained": 0.5535179504972677,
+    "serial_fraction": 0.5535179504972677,
+    "fit_constraint": "s restricted to [0,1]; unconstrained value retained",
+    "normalized_runtime_rmse": 0.06704489772575499,
+    "asymptotic_speedup_ceiling": 1.8066261430214199,
+    "ceiling_note": "null means infinite in the fitted ideal model; extrapolation is not a measured hardware guarantee",
+    "limitations": "Memory contention, process barriers and heterogeneous cores violate a constant serial-fraction model."
+  },
+  "records": [
+    {
+      "mode": "strong",
+      "p": 1,
+      "N": 1408,
+      "steps": 128,
+      "reference_time_s": 1.174186459,
+      "reference_salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 1.22631775,
+          "setup_spawn_time_s": 0.082990375,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 1.164790542,
+          "setup_spawn_time_s": 0.078758958,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 1.195822291,
+          "setup_spawn_time_s": 0.069293375,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        }
+      ]
+    },
+    {
+      "mode": "strong",
+      "p": 2,
+      "N": 1408,
+      "steps": 128,
+      "reference_time_s": 1.174186459,
+      "reference_salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 0.781893166,
+          "setup_spawn_time_s": 0.069274584,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 0.784170333,
+          "setup_spawn_time_s": 0.073104875,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 0.820795375,
+          "setup_spawn_time_s": 0.098022833,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        }
+      ]
+    },
+    {
+      "mode": "strong",
+      "p": 4,
+      "N": 1408,
+      "steps": 128,
+      "reference_time_s": 1.174186459,
+      "reference_salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 0.553806625,
+          "setup_spawn_time_s": 0.089770875,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 0.81432175,
+          "setup_spawn_time_s": 0.104542584,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 1.208524292,
+          "setup_spawn_time_s": 0.177258625,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        }
+      ]
+    },
+    {
+      "mode": "strong",
+      "p": 8,
+      "N": 1408,
+      "steps": 128,
+      "reference_time_s": 1.174186459,
+      "reference_salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 0.795101875,
+          "setup_spawn_time_s": 0.258426417,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 1.175040333,
+          "setup_spawn_time_s": 0.261961708,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 0.748038833,
+          "setup_spawn_time_s": 0.181361958,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        }
+      ]
+    },
+    {
+      "mode": "weak",
+      "p": 1,
+      "N": 1408,
+      "steps": 128,
+      "reference_time_s": 1.174186459,
+      "reference_salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 1.224736958,
+          "setup_spawn_time_s": 0.070236667,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 1.127192083,
+          "setup_spawn_time_s": 0.064654125,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 1.174617625,
+          "setup_spawn_time_s": 0.07200775,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 973979.4732291303,
+          "salted_rounded6_sha256": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+        }
+      ]
+    },
+    {
+      "mode": "weak",
+      "p": 2,
+      "N": 1992,
+      "steps": 128,
+      "reference_time_s": 2.069439583,
+      "reference_salted_rounded6_sha256": "8d09b08acb31f2712b204e3aaa01489e67a7f870ced51985aa7423371e6bf09a",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 1.283404875,
+          "setup_spawn_time_s": 0.105272959,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 1958979.2427901227,
+          "salted_rounded6_sha256": "8d09b08acb31f2712b204e3aaa01489e67a7f870ced51985aa7423371e6bf09a"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 1.414069875,
+          "setup_spawn_time_s": 0.082910875,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 1958979.2427901227,
+          "salted_rounded6_sha256": "8d09b08acb31f2712b204e3aaa01489e67a7f870ced51985aa7423371e6bf09a"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 1.334258167,
+          "setup_spawn_time_s": 0.086078417,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 1958979.2427901227,
+          "salted_rounded6_sha256": "8d09b08acb31f2712b204e3aaa01489e67a7f870ced51985aa7423371e6bf09a"
+        }
+      ]
+    },
+    {
+      "mode": "weak",
+      "p": 4,
+      "N": 2816,
+      "steps": 128,
+      "reference_time_s": 2.031237791,
+      "reference_salted_rounded6_sha256": "0be8964f84566c1d4b232ebc9dd6e0cb31a1b748bb9e28192d2e4a68d64b93b1",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 1.806114875,
+          "setup_spawn_time_s": 0.351489417,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 3928213.716028505,
+          "salted_rounded6_sha256": "0be8964f84566c1d4b232ebc9dd6e0cb31a1b748bb9e28192d2e4a68d64b93b1"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 1.713400542,
+          "setup_spawn_time_s": 0.103785416,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 3928213.716028505,
+          "salted_rounded6_sha256": "0be8964f84566c1d4b232ebc9dd6e0cb31a1b748bb9e28192d2e4a68d64b93b1"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 1.757795458,
+          "setup_spawn_time_s": 0.12832925,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 3928213.716028505,
+          "salted_rounded6_sha256": "0be8964f84566c1d4b232ebc9dd6e0cb31a1b748bb9e28192d2e4a68d64b93b1"
+        }
+      ]
+    },
+    {
+      "mode": "weak",
+      "p": 8,
+      "N": 3983,
+      "steps": 128,
+      "reference_time_s": 3.624801708,
+      "reference_salted_rounded6_sha256": "b5b5cf1fc6bb1c4b00c8d3f2513875c93cbe3313cbf5625556c6cf41fcab0332",
+      "trials": [
+        {
+          "trial": 1,
+          "compute_time_s": 3.6996635,
+          "setup_spawn_time_s": 0.248814584,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 7883710.726531682,
+          "salted_rounded6_sha256": "b5b5cf1fc6bb1c4b00c8d3f2513875c93cbe3313cbf5625556c6cf41fcab0332"
+        },
+        {
+          "trial": 2,
+          "compute_time_s": 3.760163291,
+          "setup_spawn_time_s": 0.320584542,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 7883710.726531682,
+          "salted_rounded6_sha256": "b5b5cf1fc6bb1c4b00c8d3f2513875c93cbe3313cbf5625556c6cf41fcab0332"
+        },
+        {
+          "trial": 3,
+          "compute_time_s": 3.666873458,
+          "setup_spawn_time_s": 0.240136208,
+          "max_abs_error": 0.0,
+          "bitwise_equal": true,
+          "checksum_sum_float64": 7883710.726531682,
+          "salted_rounded6_sha256": "b5b5cf1fc6bb1c4b00c8d3f2513875c93cbe3313cbf5625556c6cf41fcab0332"
+        }
+      ]
+    }
+  ],
+  "mode_baselines": {
+    "strong": {
+      "p": 1,
+      "time_s": 1.195822291,
+      "work_updates": 253035008,
+      "source": "median of this strong mode's own P=1 raw compute times"
+    },
+    "weak": {
+      "p": 1,
+      "time_s": 1.174617625,
+      "work_updates": 253035008,
+      "source": "median of this weak mode's own P=1 raw compute times"
+    }
+  },
+  "gustafson_model_note": "Illustrative P-s*(P-1) curve using the serial fraction fitted to strong-scaling runtimes. This reuses a strong-scaling model parameter; it does not measure the serial time fraction of each scaled weak workload and is not an empirical Gustafson-Barsis verification. Observed weak throughput is reported separately."
+}

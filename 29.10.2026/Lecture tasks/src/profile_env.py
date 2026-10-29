@@ -20,6 +20,8 @@ def command(*args):
 
 def sysctl(key):
     raw = command("sysctl", "-n", key)
+    if not raw:
+        return None
     return int(raw) if raw and raw.isdecimal() else raw
 
 
