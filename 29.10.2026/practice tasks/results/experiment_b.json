@@ -1,0 +1,254 @@
+{
+  "experiment": "experiment_b",
+  "student_id": "230103188",
+  "captured_at_utc": "2026-10-29T09:54:07.176449+00:00",
+  "configuration": {
+    "total_increments": 2000000,
+    "counter_type": "signed int32",
+    "synchronization": "Value default RLock plus explicit per-increment Lock, as in handout"
+  },
+  "description": "Fixed 2,000,000 shared increments with a mutex on every update.",
+  "start_method": "spawn",
+  "trials_per_p": 5,
+  "worker_counts": [
+    1,
+    2,
+    4
+  ],
+  "timer": "time.perf_counter_ns",
+  "timer_resolution_s": 4.166666666666667e-08,
+  "timing_scope": "End-to-end: includes process/pool creation, work, IPC, reduction and joining. A additionally includes 0.40s sleep; counter allocation for B precedes timing.",
+  "trial_order": "Rotate [1,2,4] between trials; no overlapping experiments.",
+  "runs": [
+    {
+      "elapsed_ns": 4063046500,
+      "elapsed_s": 4.0630465,
+      "work_per_worker": [
+        2000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 1,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 10839205041,
+      "elapsed_s": 10.839205041,
+      "work_per_worker": [
+        1000000,
+        1000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 2,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 11272015333,
+      "elapsed_s": 11.272015333,
+      "work_per_worker": [
+        500000,
+        500000,
+        500000,
+        500000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 4,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 11743802458,
+      "elapsed_s": 11.743802458,
+      "work_per_worker": [
+        1000000,
+        1000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 2,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 11806921625,
+      "elapsed_s": 11.806921625,
+      "work_per_worker": [
+        500000,
+        500000,
+        500000,
+        500000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 4,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 4177758500,
+      "elapsed_s": 4.1777585,
+      "work_per_worker": [
+        2000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 1,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 11809338958,
+      "elapsed_s": 11.809338958,
+      "work_per_worker": [
+        500000,
+        500000,
+        500000,
+        500000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 4,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 4238480625,
+      "elapsed_s": 4.238480625,
+      "work_per_worker": [
+        2000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 1,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 10374376583,
+      "elapsed_s": 10.374376583,
+      "work_per_worker": [
+        1000000,
+        1000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 2,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 4126694583,
+      "elapsed_s": 4.126694583,
+      "work_per_worker": [
+        2000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 1,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 11678187625,
+      "elapsed_s": 11.678187625,
+      "work_per_worker": [
+        1000000,
+        1000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 2,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 11568102625,
+      "elapsed_s": 11.568102625,
+      "work_per_worker": [
+        500000,
+        500000,
+        500000,
+        500000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 4,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 10994604375,
+      "elapsed_s": 10.994604375,
+      "work_per_worker": [
+        1000000,
+        1000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 2,
+      "trial": 5
+    },
+    {
+      "elapsed_ns": 11248103917,
+      "elapsed_s": 11.248103917,
+      "work_per_worker": [
+        500000,
+        500000,
+        500000,
+        500000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 4,
+      "trial": 5
+    },
+    {
+      "elapsed_ns": 4213315834,
+      "elapsed_s": 4.213315834,
+      "work_per_worker": [
+        2000000
+      ],
+      "actual_total": 2000000,
+      "expected_total": 2000000,
+      "correct": true,
+      "p": 1,
+      "trial": 5
+    }
+  ],
+  "summary": [
+    {
+      "p": 1,
+      "median_s": 4.1777585,
+      "min_s": 4.0630465,
+      "max_s": 4.238480625,
+      "speedup": 1.0,
+      "efficiency_pct": 100.0,
+      "karp_flatt": null
+    },
+    {
+      "p": 2,
+      "median_s": 10.994604375,
+      "min_s": 10.374376583,
+      "max_s": 11.743802458,
+      "speedup": 0.37998261306241865,
+      "efficiency_pct": 18.999130653120933,
+      "karp_flatt": 4.263398722065911
+    },
+    {
+      "p": 4,
+      "median_s": 11.568102625,
+      "min_s": 11.248103917,
+      "max_s": 11.809338958,
+      "speedup": 0.3611446609205717,
+      "efficiency_pct": 9.028616523014293,
+      "karp_flatt": 3.358631349003698
+    }
+  ],
+  "all_numerical_checks_passed": true
+}
