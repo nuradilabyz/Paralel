@@ -1,0 +1,74 @@
+{
+  "issuer": "src/verify_numerics.py",
+  "type": "LOCAL_NUMERICAL_AUDIT",
+  "local_numerical_status": "PASS",
+  "checked_at_utc": "2026-10-29T09:25:20.653140+00:00",
+  "student_id": "230103188",
+  "salted_N": 1408,
+  "provided_verifier": {
+    "status": "FAIL",
+    "returncode": 1,
+    "unchanged_script_sha256": "bce8d586fd800f888d5001cb6919fd915590f9ec25dab1ab62bd703a502ebb21",
+    "expected_cache_line_portability_failure": true,
+    "reason": "Original verifier hard-codes 64-byte cache lines; actual host reports 128 bytes",
+    "execution_scope": "Stops at M0 cache-line check; later supplied checks were not executed",
+    "log": "results/provided_verifier.log"
+  },
+  "checks": {
+    "stride": {
+      "status": "PASS",
+      "recorded_trials_checked": 40,
+      "reduction": "Every stored sum equals exact touched-element count",
+      "timing_medians_recomputed": true
+    },
+    "dense": {
+      "status": "PASS",
+      "independent_reconstruction": "Full seeded N-by-N A and B; leading M-by-M NumPy product",
+      "N": 1408,
+      "M": 704,
+      "atol": 1e-12,
+      "rtol": 0,
+      "max_abs_error_vs_independent": {
+        "naive": 1.1368683772161603e-13,
+        "interchanged": 1.1368683772161603e-13,
+        "reference": 0.0
+      },
+      "salted_rounded6_sha256": {
+        "naive": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8",
+        "interchanged": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8",
+        "reference": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8"
+      }
+    },
+    "false_sharing": {
+      "status": "PASS",
+      "raw_trials_checked": 48,
+      "increments_per_worker": 5000000,
+      "all_individual_and_total_counts_exact": true,
+      "timing_medians_and_metrics_recomputed": true,
+      "metric_limit": "P*K grows with P; PDF e is not a fixed-work serial-fraction estimate"
+    },
+    "scaling": {
+      "status": "PASS",
+      "saved_arrays_independently_reconstructed": [
+        "stencil_reference.npy",
+        "stencil_parallel.npy"
+      ],
+      "N": 1408,
+      "steps": 128,
+      "atol": 1e-12,
+      "rtol": 0,
+      "saved_salted_rounded6_sha256": {
+        "reference": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6",
+        "parallel": "df1f5ffb6483ec16dadc3913c86e5b2e6bc02cda530ad063cb9a6d4fa522b0d6"
+      },
+      "raw_trial_records_checked": 24,
+      "scope": "Base strong and weak-P1 outputs independently reconstructed. For larger weak grids, this audit checks all recorded per-trial reference digests, error tolerances and timing metrics; the full weak arrays were checked during execution and are not persisted."
+    },
+    "roofline": {
+      "status": "PASS",
+      "classification": "memory-bound (working hypothesis; process synchronization also limits scaling)",
+      "limitation": "Low-AI model hypothesis; not a hardware-counter measurement of DRAM saturation"
+    }
+  },
+  "receipt_note": "Local receipt is unsigned; it does not override the provided verifier failure or authenticate who authored/performed the work."
+}

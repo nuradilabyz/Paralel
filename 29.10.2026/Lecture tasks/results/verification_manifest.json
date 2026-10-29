@@ -1,0 +1,148 @@
+{
+  "type": "LOCAL_FILE_INTEGRITY_MANIFEST",
+  "hash": "SHA-256",
+  "scope": "Source .py/.c, unchanged supplied verifier, run_all.py and an explicit list of stable scientific result JSON/TSV/NPY plus sysctl capture. README, all logs, numerical audit report, this manifest and the local receipt are excluded to avoid changing or circular hashes.",
+  "files": [
+    {
+      "path": "results/dense_interchanged.npy",
+      "bytes": 3965056,
+      "sha256": "38ded786090f59704b5a174ccc60f176a83c9089951907082d015f2827d1b0ec"
+    },
+    {
+      "path": "results/dense_naive.npy",
+      "bytes": 3965056,
+      "sha256": "38ded786090f59704b5a174ccc60f176a83c9089951907082d015f2827d1b0ec"
+    },
+    {
+      "path": "results/dense_reference.npy",
+      "bytes": 3965056,
+      "sha256": "8ed17416e69dc1e02e0ee85f676b3c63101052acd37f76731adee7c56b395389"
+    },
+    {
+      "path": "results/false_sharing_karp_flatt.tsv",
+      "bytes": 1636,
+      "sha256": "cdd88e6412320d10380d4bfc086f0e37e0480e3f48547056e70ac5465fac65cf"
+    },
+    {
+      "path": "results/false_sharing_trials.json",
+      "bytes": 66853,
+      "sha256": "c431b7fb3a3d405e574b0c91af7dab51fa27791377805a524994c2febc1c02f2"
+    },
+    {
+      "path": "results/host_profile.json",
+      "bytes": 1750,
+      "sha256": "c88d1a426241938147d5645fa0c6acb14743f27a2d9512345da757b32df365b3"
+    },
+    {
+      "path": "results/loop_interchange.json",
+      "bytes": 1856,
+      "sha256": "e132cf54a8d958e93ec2c050da91a5a144e9380017293cb4f91c0351bf3e8a6b"
+    },
+    {
+      "path": "results/roofline_summary.json",
+      "bytes": 4436,
+      "sha256": "d3b6455637b04b0b229c3b5d857513815a1ff88a0f2975b38df056cc638181c1"
+    },
+    {
+      "path": "results/salted_params.json",
+      "bytes": 93,
+      "sha256": "e292ce4717df7af1c63972d7e49e2c043f47b10accb189e0cc1d7e3ced1f5ac8"
+    },
+    {
+      "path": "results/scaling_metrics.tsv",
+      "bytes": 1669,
+      "sha256": "55e42301b44b5236309aa75c13fdc521ff8ab8d1cb81e28f38d3c08cbbd34a78"
+    },
+    {
+      "path": "results/scaling_trials.json",
+      "bytes": 13139,
+      "sha256": "a8ad8a70e6aba5e10176273926352af1bd9f5578feffedc107a5913d38b4ad40"
+    },
+    {
+      "path": "results/stencil_parallel.npy",
+      "bytes": 15859840,
+      "sha256": "afb8f993fabb22370229578cb62508c8d366570545fd2d496bae88fa4b5fa363"
+    },
+    {
+      "path": "results/stencil_reference.npy",
+      "bytes": 15859840,
+      "sha256": "afb8f993fabb22370229578cb62508c8d366570545fd2d496bae88fa4b5fa363"
+    },
+    {
+      "path": "results/stride_results.tsv",
+      "bytes": 977,
+      "sha256": "479f419c1d18f8152a62afb34bf25b3ff0823f76cd84401f5ab93793678d5873"
+    },
+    {
+      "path": "results/stride_trials.json",
+      "bytes": 6216,
+      "sha256": "35bbaee577619ad9078e1d51d8563f46fe59a2bf36c9b9e9c586d62988bab97b"
+    },
+    {
+      "path": "results/sysctl_raw.txt",
+      "bytes": 937,
+      "sha256": "2da3b4ba9c739b786ed22c3559cf8d1e86d82c63a1a5c6e3fba98c2d0d6019f3"
+    },
+    {
+      "path": "run_all.py",
+      "bytes": 1746,
+      "sha256": "913729c5c3b7b60bebcba3dfcf01d9be8c4744afff16fc062c936626a4162c0e"
+    },
+    {
+      "path": "src/build_summary.py",
+      "bytes": 16882,
+      "sha256": "459e7d609040ea26f782a8c109a378c822197c2fca9392cb01d024ac9d15d575"
+    },
+    {
+      "path": "src/common.py",
+      "bytes": 1033,
+      "sha256": "acc05442d2e60556ecb716a76611faa08c077a79738dcd3e62c63eff85e96264"
+    },
+    {
+      "path": "src/dense_kernel.py",
+      "bytes": 3848,
+      "sha256": "9d1e0513358f0d3574bd5a373f816f818c045926972963b85958b76133d3aef2"
+    },
+    {
+      "path": "src/false_sharing.py",
+      "bytes": 10341,
+      "sha256": "6051f4a68021d1b24e154348dd61ae66bb4838d6f953513732dafd754ca5e118"
+    },
+    {
+      "path": "src/m1_kernels.c",
+      "bytes": 1208,
+      "sha256": "86b63d490767143f1580b10d551c93e00cbf31b3b842c003a5cf8f3e41421901"
+    },
+    {
+      "path": "src/profile_env.py",
+      "bytes": 5485,
+      "sha256": "9399191d70f3b379b45452c13c3b9156d359e025173a97f5c8463da539f97703"
+    },
+    {
+      "path": "src/salt.py",
+      "bytes": 437,
+      "sha256": "4a41d2de95ad6d88f858ddd1cdfb01211e37bb4dfd08b2f548b648c76bf2aa25"
+    },
+    {
+      "path": "src/scaling_study.py",
+      "bytes": 21367,
+      "sha256": "a40a12374244b5bb3ae735721f610dee72f0c90dbab5b567740ce6dcd69ae5ed"
+    },
+    {
+      "path": "src/stride_bench.py",
+      "bytes": 4724,
+      "sha256": "90442d5e2b474a190d9aa51e9058eb69b16314909a48bf5266fbcbdc5ef66d8e"
+    },
+    {
+      "path": "src/verify_numerics.py",
+      "bytes": 24794,
+      "sha256": "5fc8eed42ddc97f2bd45626f36ed30cbbebfefe2e9b97fa2b1f33ee8312969c7"
+    },
+    {
+      "path": "verify_outputs.py",
+      "bytes": 7811,
+      "sha256": "bce8d586fd800f888d5001cb6919fd915590f9ec25dab1ab62bd703a502ebb21"
+    }
+  ],
+  "authentication": "Unsigned integrity digests; no instructor or third-party authentication"
+}
