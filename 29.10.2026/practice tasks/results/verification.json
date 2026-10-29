@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-29T09:57:14.716366+00:00",
+  "checks": {
+    "experiment_a": {
+      "numerical_status": "PASS",
+      "raw_trials_verified": 15,
+      "median_and_metric_check": "PASS"
+    },
+    "experiment_b": {
+      "numerical_status": "PASS",
+      "raw_trials_verified": 15,
+      "median_and_metric_check": "PASS"
+    },
+    "experiment_c": {
+      "numerical_status": "PASS",
+      "raw_trials_verified": 15,
+      "median_and_metric_check": "PASS"
+    }
+  },
+  "files_sha256": [
+    {
+      "path": "Practice Lab Handout.pdf",
+      "sha256": "6de69440416150c11dcb6dd6bf9fd808ed6a538f53b9377fd77bf05cc94b9983"
+    },
+    {
+      "path": "build_report.py",
+      "sha256": "f3156402e00e1836f791c1a8ea731d40f1412c819cf9852cb0af4ee856d02c9e"
+    },
+    {
+      "path": "common.py",
+      "sha256": "414aeadae2015371e6374d8afae2f646128f7d5ce2605650602d40fe45381785"
+    },
+    {
+      "path": "exp_a_serial.py",
+      "sha256": "0745a1a5d1d0d2af84f05f0221a9cf647ef17f3804dec97519dcbe3be3f310c6"
+    },
+    {
+      "path": "exp_b_contention.py",
+      "sha256": "6e315e0301b65110a91cf16045053577047cc6d476cb871d37187bd066199f75"
+    },
+    {
+      "path": "exp_c_fixed.py",
+      "sha256": "43952de72c99d430d7f9d18b5f4dc9213b3c3b17333d452cfb9a5b1d3a98ea8d"
+    },
+    {
+      "path": "profile_env.py",
+      "sha256": "52ba8f4fd904b07854e6c16773efc2275ef25f136707b7a80f96960ed412705f"
+    },
+    {
+      "path": "results/experiment_a.json",
+      "sha256": "cfc6c67da35323c23eaa02a7735adf6b83d3285f65fb85485a6aed0024ea01f2"
+    },
+    {
+      "path": "results/experiment_a.tsv",
+      "sha256": "3f1bcf3b0bffb513a264328223f1ff96728e0a095511774b9689809b1c9d2955"
+    },
+    {
+      "path": "results/experiment_b.json",
+      "sha256": "35986f20701228d56a0daa9744082194ea296fa981302ac8869d3fdfdd8763f9"
+    },
+    {
+      "path": "results/experiment_b.tsv",
+      "sha256": "3f69d4f80b1dcd593319dca7cf682c7398e2b4eae867c175adda7187f19ba7ab"
+    },
+    {
+      "path": "results/experiment_c.json",
+      "sha256": "865bb179089b415207e97ca2202dca79ca72afd5fca0f8bcca765af7ea6ce05b"
+    },
+    {
+      "path": "results/experiment_c.tsv",
+      "sha256": "369029dfe4a389105f363f60762a816dc4df268fbfb796e15d0515e593fe5af3"
+    },
+    {
+      "path": "results/host_profile.json",
+      "sha256": "d10bf7ed5d34f6c6d08d4bf4ebeedb9d34156da9a188777ea351060828e00833"
+    },
+    {
+      "path": "run_all.py",
+      "sha256": "21d18a266a725aeeaafa269450d530da72414f05136b7e8fd7e8798f1edd77c6"
+    },
+    {
+      "path": "verify_results.py",
+      "sha256": "b537fafcf298d6a748257d2760a1c160eb5a0993a89b9183215fa6b88010b77c"
+    }
+  ],
+  "scope": "Checks saved numerical outputs and timing arithmetic; does not certify authorship or require hardware-dependent target speedups."
+}

@@ -1,0 +1,18 @@
+experiment_c trial=1 P=1 T=0.491746s correct=True
+experiment_c trial=1 P=2 T=0.242819s correct=True
+experiment_c trial=1 P=4 T=0.148512s correct=True
+experiment_c trial=2 P=2 T=0.242111s correct=True
+experiment_c trial=2 P=4 T=0.150482s correct=True
+experiment_c trial=2 P=1 T=0.436840s correct=True
+experiment_c trial=3 P=4 T=0.147454s correct=True
+experiment_c trial=3 P=1 T=0.433007s correct=True
+experiment_c trial=3 P=2 T=0.237421s correct=True
+experiment_c trial=4 P=1 T=0.433531s correct=True
+experiment_c trial=4 P=2 T=0.239707s correct=True
+experiment_c trial=4 P=4 T=0.160979s correct=True
+experiment_c trial=5 P=2 T=0.243429s correct=True
+experiment_c trial=5 P=4 T=0.162023s correct=True
+experiment_c trial=5 P=1 T=0.427303s correct=True
+{'p': 1, 'median_s': 0.433530667, 'min_s': 0.427303125, 'max_s': 0.491745584, 'speedup': 1.0, 'efficiency_pct': 100.0, 'karp_flatt': None}
+{'p': 2, 'median_s': 0.242111459, 'min_s': 0.237421042, 'max_s': 0.243428583, 'speedup': 1.7906243215030975, 'efficiency_pct': 89.53121607515487, 'karp_flatt': 0.11692886999387286}
+{'p': 4, 'median_s': 0.150482166, 'min_s': 0.147453833, 'max_s': 0.16202325, 'speedup': 2.880943825595918, 'efficiency_pct': 72.02359563989795, 'karp_flatt': 0.12947795839934587}
