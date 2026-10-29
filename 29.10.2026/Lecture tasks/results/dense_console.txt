@@ -1,0 +1,7 @@
+naive trial 1: 0.296709 s
+interchanged trial 1: 0.061036 s
+interchanged trial 2: 0.059249 s
+naive trial 2: 0.303281 s
+naive trial 3: 0.424756 s
+interchanged trial 3: 0.063319 s
+Loop interchange speedup: 4.969x; max error=0

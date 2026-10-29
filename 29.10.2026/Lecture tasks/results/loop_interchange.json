@@ -1,0 +1,58 @@
+{
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+  "compiler_flags": [
+    "-O3",
+    "-std=c11",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-dynamiclib"
+  ],
+  "source": "src/m1_kernels.c",
+  "source_sha256": "86b63d490767143f1580b10d551c93e00cbf31b3b842c003a5cf8f3e41421901",
+  "implementation": "explicit C loops called through Python ctypes; no BLAS",
+  "N": 1408,
+  "M": 704,
+  "seed": 87657,
+  "allocation": "full N-by-N A and B; leading M-by-M sub-block product; original row pitch N",
+  "naive_time_s": 0.3032815,
+  "interchanged_time_s": 0.061036125,
+  "speedup": 4.9688852298536315,
+  "trials_s": {
+    "naive": [
+      0.296709292,
+      0.3032815,
+      0.424756041
+    ],
+    "interchanged": [
+      0.061036125,
+      0.0592485,
+      0.063318834
+    ]
+  },
+  "recorded_iterations": 3,
+  "timer": "time.perf_counter_ns",
+  "timing_excludes": [
+    "allocation",
+    "output zero fill",
+    "NumPy reference",
+    "verification",
+    "file output"
+  ],
+  "absolute_tolerance": 1e-12,
+  "relative_tolerance": 0.0,
+  "max_abs_error_interchanged_vs_naive": 0.0,
+  "max_abs_error_naive_vs_reference": 1.1368683772161603e-13,
+  "max_abs_error_interchanged_vs_reference": 1.1368683772161603e-13,
+  "numerical_checks_passed": true,
+  "rounded6_salted_sha256": {
+    "naive": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8",
+    "interchanged": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8",
+    "reference": "2a1405d4e59253c383821dcea8e1396f0343e1424e17d35450d7f55aadf3a3b8"
+  },
+  "output_files": {
+    "naive": "results/dense_naive.npy",
+    "interchanged": "results/dense_interchanged.npy",
+    "reference": "results/dense_reference.npy"
+  },
+  "note": "Floating-point comparison is authoritative; a rounded digest may differ if a value lies at a six-decimal rounding boundary."
+}
