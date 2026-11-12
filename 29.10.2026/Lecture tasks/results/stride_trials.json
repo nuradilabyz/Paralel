@@ -1,0 +1,302 @@
+{
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+  "compiler_flags": [
+    "-O3",
+    "-std=c11",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-dynamiclib"
+  ],
+  "source": "src/m1_kernels.c",
+  "source_sha256": "86b63d490767143f1580b10d551c93e00cbf31b3b842c003a5cf8f3e41421901",
+  "implementation": "explicit C loops called through Python ctypes; no BLAS",
+  "buffer_elements": 16777216,
+  "buffer_bytes": 134217728,
+  "warmup_iterations_per_stride": 5,
+  "recorded_iterations_per_stride": 5,
+  "timer": "time.perf_counter_ns",
+  "cache_flush": false,
+  "note": "Repeated streaming passes; no fabricated cache-hit or hardware-counter values. Actual cache line comes from host_profile.json.",
+  "trials": [
+    {
+      "stride": 1,
+      "trial": 1,
+      "elapsed_ns": 15695584,
+      "elements_touched": 16777216,
+      "sum": 16777216.0
+    },
+    {
+      "stride": 1,
+      "trial": 2,
+      "elapsed_ns": 15474917,
+      "elements_touched": 16777216,
+      "sum": 16777216.0
+    },
+    {
+      "stride": 1,
+      "trial": 3,
+      "elapsed_ns": 15364458,
+      "elements_touched": 16777216,
+      "sum": 16777216.0
+    },
+    {
+      "stride": 1,
+      "trial": 4,
+      "elapsed_ns": 15290083,
+      "elements_touched": 16777216,
+      "sum": 16777216.0
+    },
+    {
+      "stride": 1,
+      "trial": 5,
+      "elapsed_ns": 15863041,
+      "elements_touched": 16777216,
+      "sum": 16777216.0
+    },
+    {
+      "stride": 2,
+      "trial": 1,
+      "elapsed_ns": 7888917,
+      "elements_touched": 8388608,
+      "sum": 8388608.0
+    },
+    {
+      "stride": 2,
+      "trial": 2,
+      "elapsed_ns": 7962417,
+      "elements_touched": 8388608,
+      "sum": 8388608.0
+    },
+    {
+      "stride": 2,
+      "trial": 3,
+      "elapsed_ns": 7856750,
+      "elements_touched": 8388608,
+      "sum": 8388608.0
+    },
+    {
+      "stride": 2,
+      "trial": 4,
+      "elapsed_ns": 7751834,
+      "elements_touched": 8388608,
+      "sum": 8388608.0
+    },
+    {
+      "stride": 2,
+      "trial": 5,
+      "elapsed_ns": 7943333,
+      "elements_touched": 8388608,
+      "sum": 8388608.0
+    },
+    {
+      "stride": 4,
+      "trial": 1,
+      "elapsed_ns": 4026375,
+      "elements_touched": 4194304,
+      "sum": 4194304.0
+    },
+    {
+      "stride": 4,
+      "trial": 2,
+      "elapsed_ns": 4096750,
+      "elements_touched": 4194304,
+      "sum": 4194304.0
+    },
+    {
+      "stride": 4,
+      "trial": 3,
+      "elapsed_ns": 4084334,
+      "elements_touched": 4194304,
+      "sum": 4194304.0
+    },
+    {
+      "stride": 4,
+      "trial": 4,
+      "elapsed_ns": 4036000,
+      "elements_touched": 4194304,
+      "sum": 4194304.0
+    },
+    {
+      "stride": 4,
+      "trial": 5,
+      "elapsed_ns": 4133875,
+      "elements_touched": 4194304,
+      "sum": 4194304.0
+    },
+    {
+      "stride": 8,
+      "trial": 1,
+      "elapsed_ns": 2364083,
+      "elements_touched": 2097152,
+      "sum": 2097152.0
+    },
+    {
+      "stride": 8,
+      "trial": 2,
+      "elapsed_ns": 2765583,
+      "elements_touched": 2097152,
+      "sum": 2097152.0
+    },
+    {
+      "stride": 8,
+      "trial": 3,
+      "elapsed_ns": 2535917,
+      "elements_touched": 2097152,
+      "sum": 2097152.0
+    },
+    {
+      "stride": 8,
+      "trial": 4,
+      "elapsed_ns": 2170417,
+      "elements_touched": 2097152,
+      "sum": 2097152.0
+    },
+    {
+      "stride": 8,
+      "trial": 5,
+      "elapsed_ns": 2278292,
+      "elements_touched": 2097152,
+      "sum": 2097152.0
+    },
+    {
+      "stride": 16,
+      "trial": 1,
+      "elapsed_ns": 3261708,
+      "elements_touched": 1048576,
+      "sum": 1048576.0
+    },
+    {
+      "stride": 16,
+      "trial": 2,
+      "elapsed_ns": 3187917,
+      "elements_touched": 1048576,
+      "sum": 1048576.0
+    },
+    {
+      "stride": 16,
+      "trial": 3,
+      "elapsed_ns": 3247125,
+      "elements_touched": 1048576,
+      "sum": 1048576.0
+    },
+    {
+      "stride": 16,
+      "trial": 4,
+      "elapsed_ns": 3143709,
+      "elements_touched": 1048576,
+      "sum": 1048576.0
+    },
+    {
+      "stride": 16,
+      "trial": 5,
+      "elapsed_ns": 3031750,
+      "elements_touched": 1048576,
+      "sum": 1048576.0
+    },
+    {
+      "stride": 32,
+      "trial": 1,
+      "elapsed_ns": 2017041,
+      "elements_touched": 524288,
+      "sum": 524288.0
+    },
+    {
+      "stride": 32,
+      "trial": 2,
+      "elapsed_ns": 1700125,
+      "elements_touched": 524288,
+      "sum": 524288.0
+    },
+    {
+      "stride": 32,
+      "trial": 3,
+      "elapsed_ns": 1647625,
+      "elements_touched": 524288,
+      "sum": 524288.0
+    },
+    {
+      "stride": 32,
+      "trial": 4,
+      "elapsed_ns": 1703042,
+      "elements_touched": 524288,
+      "sum": 524288.0
+    },
+    {
+      "stride": 32,
+      "trial": 5,
+      "elapsed_ns": 1682875,
+      "elements_touched": 524288,
+      "sum": 524288.0
+    },
+    {
+      "stride": 64,
+      "trial": 1,
+      "elapsed_ns": 877167,
+      "elements_touched": 262144,
+      "sum": 262144.0
+    },
+    {
+      "stride": 64,
+      "trial": 2,
+      "elapsed_ns": 897375,
+      "elements_touched": 262144,
+      "sum": 262144.0
+    },
+    {
+      "stride": 64,
+      "trial": 3,
+      "elapsed_ns": 897250,
+      "elements_touched": 262144,
+      "sum": 262144.0
+    },
+    {
+      "stride": 64,
+      "trial": 4,
+      "elapsed_ns": 930917,
+      "elements_touched": 262144,
+      "sum": 262144.0
+    },
+    {
+      "stride": 64,
+      "trial": 5,
+      "elapsed_ns": 931125,
+      "elements_touched": 262144,
+      "sum": 262144.0
+    },
+    {
+      "stride": 128,
+      "trial": 1,
+      "elapsed_ns": 428166,
+      "elements_touched": 131072,
+      "sum": 131072.0
+    },
+    {
+      "stride": 128,
+      "trial": 2,
+      "elapsed_ns": 436417,
+      "elements_touched": 131072,
+      "sum": 131072.0
+    },
+    {
+      "stride": 128,
+      "trial": 3,
+      "elapsed_ns": 427041,
+      "elements_touched": 131072,
+      "sum": 131072.0
+    },
+    {
+      "stride": 128,
+      "trial": 4,
+      "elapsed_ns": 494000,
+      "elements_touched": 131072,
+      "sum": 131072.0
+    },
+    {
+      "stride": 128,
+      "trial": 5,
+      "elapsed_ns": 457250,
+      "elements_touched": 131072,
+      "sum": 131072.0
+    }
+  ]
+}

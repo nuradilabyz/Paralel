@@ -1,0 +1,25 @@
+strong P=1 N=1408 trial=1: 1.226318s compute, 0.083s setup; max error=0
+strong P=1 N=1408 trial=2: 1.164791s compute, 0.079s setup; max error=0
+strong P=1 N=1408 trial=3: 1.195822s compute, 0.069s setup; max error=0
+strong P=2 N=1408 trial=1: 0.781893s compute, 0.069s setup; max error=0
+strong P=2 N=1408 trial=2: 0.784170s compute, 0.073s setup; max error=0
+strong P=2 N=1408 trial=3: 0.820795s compute, 0.098s setup; max error=0
+strong P=4 N=1408 trial=1: 0.553807s compute, 0.090s setup; max error=0
+strong P=4 N=1408 trial=2: 0.814322s compute, 0.105s setup; max error=0
+strong P=4 N=1408 trial=3: 1.208524s compute, 0.177s setup; max error=0
+strong P=8 N=1408 trial=1: 0.795102s compute, 0.258s setup; max error=0
+strong P=8 N=1408 trial=2: 1.175040s compute, 0.262s setup; max error=0
+strong P=8 N=1408 trial=3: 0.748039s compute, 0.181s setup; max error=0
+weak   P=1 N=1408 trial=1: 1.224737s compute, 0.070s setup; max error=0
+weak   P=1 N=1408 trial=2: 1.127192s compute, 0.065s setup; max error=0
+weak   P=1 N=1408 trial=3: 1.174618s compute, 0.072s setup; max error=0
+weak   P=2 N=1992 trial=1: 1.283405s compute, 0.105s setup; max error=0
+weak   P=2 N=1992 trial=2: 1.414070s compute, 0.083s setup; max error=0
+weak   P=2 N=1992 trial=3: 1.334258s compute, 0.086s setup; max error=0
+weak   P=4 N=2816 trial=1: 1.806115s compute, 0.351s setup; max error=0
+weak   P=4 N=2816 trial=2: 1.713401s compute, 0.104s setup; max error=0
+weak   P=4 N=2816 trial=3: 1.757795s compute, 0.128s setup; max error=0
+weak   P=8 N=3983 trial=1: 3.699664s compute, 0.249s setup; max error=0
+weak   P=8 N=3983 trial=2: 3.760163s compute, 0.321s setup; max error=0
+weak   P=8 N=3983 trial=3: 3.666873s compute, 0.240s setup; max error=0
+Amdahl fitted s=0.553518, unconstrained=0.553518; observed copy bandwidth=18.955 GB/s

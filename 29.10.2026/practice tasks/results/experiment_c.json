@@ -1,0 +1,318 @@
+{
+  "experiment": "experiment_c",
+  "student_id": "230103188",
+  "captured_at_utc": "2026-10-29T09:56:47.440061+00:00",
+  "configuration": {
+    "total_increments": 20000000,
+    "synchronization": "Pool.map IPC and one final parent sum; no shared counter"
+  },
+  "description": "Fixed 20,000,000 private increments with a single final reduction.",
+  "start_method": "spawn",
+  "trials_per_p": 5,
+  "worker_counts": [
+    1,
+    2,
+    4
+  ],
+  "timer": "time.perf_counter_ns",
+  "timer_resolution_s": 4.166666666666667e-08,
+  "timing_scope": "End-to-end: includes process/pool creation, work, IPC, reduction and joining. A additionally includes 0.40s sleep; counter allocation for B precedes timing.",
+  "trial_order": "Rotate [1,2,4] between trials; no overlapping experiments.",
+  "runs": [
+    {
+      "elapsed_ns": 491745584,
+      "elapsed_s": 0.491745584,
+      "work_per_worker": [
+        20000000
+      ],
+      "partial_results": [
+        20000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 1,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 242819167,
+      "elapsed_s": 0.242819167,
+      "work_per_worker": [
+        10000000,
+        10000000
+      ],
+      "partial_results": [
+        10000000,
+        10000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 2,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 148511541,
+      "elapsed_s": 0.148511541,
+      "work_per_worker": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "partial_results": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 4,
+      "trial": 1
+    },
+    {
+      "elapsed_ns": 242111459,
+      "elapsed_s": 0.242111459,
+      "work_per_worker": [
+        10000000,
+        10000000
+      ],
+      "partial_results": [
+        10000000,
+        10000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 2,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 150482166,
+      "elapsed_s": 0.150482166,
+      "work_per_worker": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "partial_results": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 4,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 436840083,
+      "elapsed_s": 0.436840083,
+      "work_per_worker": [
+        20000000
+      ],
+      "partial_results": [
+        20000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 1,
+      "trial": 2
+    },
+    {
+      "elapsed_ns": 147453833,
+      "elapsed_s": 0.147453833,
+      "work_per_worker": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "partial_results": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 4,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 433006750,
+      "elapsed_s": 0.43300675,
+      "work_per_worker": [
+        20000000
+      ],
+      "partial_results": [
+        20000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 1,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 237421042,
+      "elapsed_s": 0.237421042,
+      "work_per_worker": [
+        10000000,
+        10000000
+      ],
+      "partial_results": [
+        10000000,
+        10000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 2,
+      "trial": 3
+    },
+    {
+      "elapsed_ns": 433530667,
+      "elapsed_s": 0.433530667,
+      "work_per_worker": [
+        20000000
+      ],
+      "partial_results": [
+        20000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 1,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 239706833,
+      "elapsed_s": 0.239706833,
+      "work_per_worker": [
+        10000000,
+        10000000
+      ],
+      "partial_results": [
+        10000000,
+        10000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 2,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 160979250,
+      "elapsed_s": 0.16097925,
+      "work_per_worker": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "partial_results": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 4,
+      "trial": 4
+    },
+    {
+      "elapsed_ns": 243428583,
+      "elapsed_s": 0.243428583,
+      "work_per_worker": [
+        10000000,
+        10000000
+      ],
+      "partial_results": [
+        10000000,
+        10000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 2,
+      "trial": 5
+    },
+    {
+      "elapsed_ns": 162023250,
+      "elapsed_s": 0.16202325,
+      "work_per_worker": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "partial_results": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 4,
+      "trial": 5
+    },
+    {
+      "elapsed_ns": 427303125,
+      "elapsed_s": 0.427303125,
+      "work_per_worker": [
+        20000000
+      ],
+      "partial_results": [
+        20000000
+      ],
+      "actual_total": 20000000,
+      "expected_total": 20000000,
+      "correct": true,
+      "p": 1,
+      "trial": 5
+    }
+  ],
+  "summary": [
+    {
+      "p": 1,
+      "median_s": 0.433530667,
+      "min_s": 0.427303125,
+      "max_s": 0.491745584,
+      "speedup": 1.0,
+      "efficiency_pct": 100.0,
+      "karp_flatt": null
+    },
+    {
+      "p": 2,
+      "median_s": 0.242111459,
+      "min_s": 0.237421042,
+      "max_s": 0.243428583,
+      "speedup": 1.7906243215030975,
+      "efficiency_pct": 89.53121607515487,
+      "karp_flatt": 0.11692886999387286
+    },
+    {
+      "p": 4,
+      "median_s": 0.150482166,
+      "min_s": 0.147453833,
+      "max_s": 0.16202325,
+      "speedup": 2.880943825595918,
+      "efficiency_pct": 72.02359563989795,
+      "karp_flatt": 0.12947795839934587
+    }
+  ],
+  "all_numerical_checks_passed": true
+}

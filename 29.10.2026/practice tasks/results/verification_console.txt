@@ -1,0 +1,4 @@
+PASS: experiment_a: all 15 trials and numerical results verified
+PASS: experiment_b: all 15 trials and numerical results verified
+PASS: experiment_c: all 15 trials and numerical results verified
+PASS: complete local numerical and metrics audit

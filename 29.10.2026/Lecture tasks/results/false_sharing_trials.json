@@ -1,0 +1,2570 @@
+{
+  "schema_version": 1,
+  "cache_line_bytes": 128,
+  "iterations_per_worker": 5000000,
+  "recorded_trials": 3,
+  "process_start_method": "spawn",
+  "timing_scope": "max(worker end_ns) - min(worker start_ns), after a synchronized barrier; excludes spawn and result IPC",
+  "workload": "Each worker performs K increments; total work is P*K (weak scaling)",
+  "synchronization": "No global lock in shared counter increments; privatized variant locks once for final publication",
+  "variants": {
+    "unpadded": "adjacent int64 counters",
+    "padded64": "PDF-prescribed 64-byte spacing",
+    "padded": "measured native cache-line spacing",
+    "privatized": "local Python int loop, one locked final write"
+  },
+  "metric_definitions": {
+    "s_variant": "T_variant(1) / T_variant(P), as requested by PDF; workload is not fixed",
+    "e_variant": "(1/s_variant - 1/P)/(1 - 1/P), PDF raw-time diagnostic, not a valid fixed-work serial fraction here",
+    "work_normalized_speedup_variant": "P * T_variant(1) / T_variant(P), assumes serial work scales linearly with P",
+    "work_normalized_e_variant": "Karp-Flatt applied to work-normalized speedup; diagnostic only, not a fitted serial fraction",
+    "p1_e": "undefined (blank in TSV, null in JSON)"
+  },
+  "limitations": [
+    "macOS process scheduling and heterogeneous cores are uncontrolled; no portable CPU pinning used",
+    "Pure Python interpreter overhead can obscure coherence effects; a collapse or monotonic trend is not guaranteed",
+    "64-byte spacing can leave two counters sharing one 128-byte line on this host",
+    "A synthetic serial-time normalization P*T1 is not an independently measured serial P*K baseline"
+  ],
+  "trials": [
+    {
+      "variant": "unpadded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 272349875,
+      "elapsed_s": 0.272349875,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685045319824833,
+          "end_ns": 1685045592174708,
+          "duration_ns": 272349875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded64",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 384834833,
+      "elapsed_s": 0.384834833,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685045657188958,
+          "end_ns": 1685046042023791,
+          "duration_ns": 384834833,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 270254042,
+      "elapsed_s": 0.270254042,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685046092674458,
+          "end_ns": 1685046362928500,
+          "duration_ns": 270254042,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "privatized",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 101173958,
+      "elapsed_s": 0.101173958,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685046415816833,
+          "end_ns": 1685046516990791,
+          "duration_ns": 101173958,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "unpadded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 338464583,
+      "elapsed_s": 0.338464583,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685046615274000,
+          "end_ns": 1685046949974541,
+          "duration_ns": 334700541,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685046615809041,
+          "end_ns": 1685046953738583,
+          "duration_ns": 337929542,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded64",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 273605834,
+      "elapsed_s": 0.273605834,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685047022646583,
+          "end_ns": 1685047295156541,
+          "duration_ns": 272509958,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685047022638666,
+          "end_ns": 1685047296244500,
+          "duration_ns": 273605834,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 271167084,
+      "elapsed_s": 0.271167084,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685047348117500,
+          "end_ns": 1685047619254166,
+          "duration_ns": 271136666,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685047348112416,
+          "end_ns": 1685047619279500,
+          "duration_ns": 271167084,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "privatized",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 105572959,
+      "elapsed_s": 0.105572959,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685047673091125,
+          "end_ns": 1685047778651875,
+          "duration_ns": 105560750,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685047673078916,
+          "end_ns": 1685047776817125,
+          "duration_ns": 103738209,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "unpadded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 344176083,
+      "elapsed_s": 0.344176083,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685047832623125,
+          "end_ns": 1685048169243541,
+          "duration_ns": 336620416,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685047832643416,
+          "end_ns": 1685048175577625,
+          "duration_ns": 342934209,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685047832656125,
+          "end_ns": 1685048170176125,
+          "duration_ns": 337520000,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685047832632333,
+          "end_ns": 1685048176799208,
+          "duration_ns": 344166875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded64",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 312910500,
+      "elapsed_s": 0.3129105,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685048239314291,
+          "end_ns": 1685048546105750,
+          "duration_ns": 306791459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685048239298833,
+          "end_ns": 1685048545565208,
+          "duration_ns": 306266375,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685048239328541,
+          "end_ns": 1685048552201541,
+          "duration_ns": 312873000,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685048239291041,
+          "end_ns": 1685048542953625,
+          "duration_ns": 303662584,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 382820791,
+      "elapsed_s": 0.382820791,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685048617608125,
+          "end_ns": 1685048993076750,
+          "duration_ns": 375468625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685048617578750,
+          "end_ns": 1685049000399541,
+          "duration_ns": 382820791,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685048617623958,
+          "end_ns": 1685048978199958,
+          "duration_ns": 360576000,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685048617592333,
+          "end_ns": 1685048989822208,
+          "duration_ns": 372229875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "privatized",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 126612125,
+      "elapsed_s": 0.126612125,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685049065102666,
+          "end_ns": 1685049177980375,
+          "duration_ns": 112877709,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685049065017541,
+          "end_ns": 1685049176733250,
+          "duration_ns": 111715709,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685049065044791,
+          "end_ns": 1685049191594958,
+          "duration_ns": 126550167,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685049064982833,
+          "end_ns": 1685049179652458,
+          "duration_ns": 114669625,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "unpadded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 632385125,
+      "elapsed_s": 0.632385125,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685049285772250,
+          "end_ns": 1685049837047250,
+          "duration_ns": 551275000,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685049285718541,
+          "end_ns": 1685049852156458,
+          "duration_ns": 566437917,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685049285694583,
+          "end_ns": 1685049825489833,
+          "duration_ns": 539795250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685049297728250,
+          "end_ns": 1685049918053958,
+          "duration_ns": 620325708,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 4,
+          "count": 5000000,
+          "start_ns": 1685049285826708,
+          "end_ns": 1685049864757916,
+          "duration_ns": 578931208,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 5,
+          "count": 5000000,
+          "start_ns": 1685049285731458,
+          "end_ns": 1685049833902916,
+          "duration_ns": 548171458,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 6,
+          "count": 5000000,
+          "start_ns": 1685049285668833,
+          "end_ns": 1685049792029291,
+          "duration_ns": 506360458,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 7,
+          "count": 5000000,
+          "start_ns": 1685049285798708,
+          "end_ns": 1685049806519666,
+          "duration_ns": 520720958,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded64",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 534262208,
+      "elapsed_s": 0.534262208,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685050000061791,
+          "end_ns": 1685050522211083,
+          "duration_ns": 522149292,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685049999924500,
+          "end_ns": 1685050529819125,
+          "duration_ns": 529894625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685050011786041,
+          "end_ns": 1685050525398375,
+          "duration_ns": 513612334,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685050000027666,
+          "end_ns": 1685050482670083,
+          "duration_ns": 482642417,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685049999958166,
+          "end_ns": 1685050516191833,
+          "duration_ns": 516233667,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 40,
+          "count": 5000000,
+          "start_ns": 1685049999975791,
+          "end_ns": 1685050534186708,
+          "duration_ns": 534210917,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685050000116625,
+          "end_ns": 1685050488250083,
+          "duration_ns": 488133458,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 56,
+          "count": 5000000,
+          "start_ns": 1685049999989083,
+          "end_ns": 1685050532551166,
+          "duration_ns": 532562083,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 597637167,
+      "elapsed_s": 0.597637167,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685050649844250,
+          "end_ns": 1685051113992791,
+          "duration_ns": 464148541,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685050648786458,
+          "end_ns": 1685051122680708,
+          "duration_ns": 473894250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685050648830500,
+          "end_ns": 1685051138342125,
+          "duration_ns": 489511625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685050659283166,
+          "end_ns": 1685051246423625,
+          "duration_ns": 587140459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685050650735458,
+          "end_ns": 1685051132272250,
+          "duration_ns": 481536792,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685050648871625,
+          "end_ns": 1685051094483250,
+          "duration_ns": 445611625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685050648910500,
+          "end_ns": 1685051148869791,
+          "duration_ns": 499959291,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685050649349250,
+          "end_ns": 1685051133778125,
+          "duration_ns": 484428875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "privatized",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 208993292,
+      "elapsed_s": 0.208993292,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685051339660583,
+          "end_ns": 1685051519157000,
+          "duration_ns": 179496417,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685051339632791,
+          "end_ns": 1685051545331666,
+          "duration_ns": 205698875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685051339921666,
+          "end_ns": 1685051525188916,
+          "duration_ns": 185267250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685051340775333,
+          "end_ns": 1685051538894625,
+          "duration_ns": 198119292,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685051339593791,
+          "end_ns": 1685051544037583,
+          "duration_ns": 204443792,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685051339685125,
+          "end_ns": 1685051539106250,
+          "duration_ns": 199421125,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685051339620000,
+          "end_ns": 1685051548587083,
+          "duration_ns": 208967083,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685051339718583,
+          "end_ns": 1685051544341291,
+          "duration_ns": 204622708,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 1
+    },
+    {
+      "variant": "padded64",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 278561375,
+      "elapsed_s": 0.278561375,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685051603484125,
+          "end_ns": 1685051882045500,
+          "duration_ns": 278561375,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 288928750,
+      "elapsed_s": 0.28892875,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685051932088625,
+          "end_ns": 1685052221017375,
+          "duration_ns": 288928750,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "privatized",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 109758250,
+      "elapsed_s": 0.10975825,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685052280815875,
+          "end_ns": 1685052390574125,
+          "duration_ns": 109758250,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "unpadded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 305873250,
+      "elapsed_s": 0.30587325,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685052444048041,
+          "end_ns": 1685052749921291,
+          "duration_ns": 305873250,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded64",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 274662000,
+      "elapsed_s": 0.274662,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685052812153250,
+          "end_ns": 1685053086800291,
+          "duration_ns": 274647041,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685052812138291,
+          "end_ns": 1685053086388583,
+          "duration_ns": 274250292,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 287366875,
+      "elapsed_s": 0.287366875,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685053151621041,
+          "end_ns": 1685053438962208,
+          "duration_ns": 287341167,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685053151595333,
+          "end_ns": 1685053437666750,
+          "duration_ns": 286071417,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "privatized",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 112795875,
+      "elapsed_s": 0.112795875,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685053493331458,
+          "end_ns": 1685053604127500,
+          "duration_ns": 110796042,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685053493325083,
+          "end_ns": 1685053606120958,
+          "duration_ns": 112795875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "unpadded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 300062375,
+      "elapsed_s": 0.300062375,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685053659595166,
+          "end_ns": 1685053959171833,
+          "duration_ns": 299576667,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685053659582458,
+          "end_ns": 1685053959644833,
+          "duration_ns": 300062375,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded64",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 306349208,
+      "elapsed_s": 0.306349208,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685054026347291,
+          "end_ns": 1685054324790666,
+          "duration_ns": 298443375,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685054026330750,
+          "end_ns": 1685054332663958,
+          "duration_ns": 306333208,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685054026314750,
+          "end_ns": 1685054332315583,
+          "duration_ns": 306000833,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685054026358458,
+          "end_ns": 1685054322041500,
+          "duration_ns": 295683042,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 328186958,
+      "elapsed_s": 0.328186958,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685054389275791,
+          "end_ns": 1685054707413666,
+          "duration_ns": 318137875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685054389291875,
+          "end_ns": 1685054717371916,
+          "duration_ns": 328080041,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685054389406791,
+          "end_ns": 1685054709205875,
+          "duration_ns": 319799084,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685054389184958,
+          "end_ns": 1685054714635500,
+          "duration_ns": 325450542,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "privatized",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 145936750,
+      "elapsed_s": 0.14593675,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685054798755791,
+          "end_ns": 1685054938161708,
+          "duration_ns": 139405917,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685054798789041,
+          "end_ns": 1685054944692541,
+          "duration_ns": 145903500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685054798860666,
+          "end_ns": 1685054941928541,
+          "duration_ns": 143067875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685054798810375,
+          "end_ns": 1685054929214791,
+          "duration_ns": 130404416,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "unpadded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 330784584,
+      "elapsed_s": 0.330784584,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685055043420166,
+          "end_ns": 1685055372912166,
+          "duration_ns": 329492000,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685055043466375,
+          "end_ns": 1685055374204750,
+          "duration_ns": 330738375,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685055043435625,
+          "end_ns": 1685055373482166,
+          "duration_ns": 330046541,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685055043450250,
+          "end_ns": 1685055371153708,
+          "duration_ns": 327703458,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded64",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 588213500,
+      "elapsed_s": 0.5882135,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685055471206333,
+          "end_ns": 1685056018402583,
+          "duration_ns": 547196250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685055471156166,
+          "end_ns": 1685055997331458,
+          "duration_ns": 526175292,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685055471087208,
+          "end_ns": 1685056055355291,
+          "duration_ns": 584268083,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685055471124083,
+          "end_ns": 1685056020051625,
+          "duration_ns": 548927542,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685055471186125,
+          "end_ns": 1685056059266458,
+          "duration_ns": 588080333,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 40,
+          "count": 5000000,
+          "start_ns": 1685055471068625,
+          "end_ns": 1685056029876500,
+          "duration_ns": 558807875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685055481534916,
+          "end_ns": 1685055993598875,
+          "duration_ns": 512063959,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 56,
+          "count": 5000000,
+          "start_ns": 1685055471052958,
+          "end_ns": 1685056042072958,
+          "duration_ns": 571020000,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 570489208,
+      "elapsed_s": 0.570489208,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685056150068750,
+          "end_ns": 1685056717559666,
+          "duration_ns": 567490916,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685056150106541,
+          "end_ns": 1685056651957583,
+          "duration_ns": 501851042,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685056149905375,
+          "end_ns": 1685056683549625,
+          "duration_ns": 533644250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685056149952708,
+          "end_ns": 1685056708654208,
+          "duration_ns": 558701500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685056160405750,
+          "end_ns": 1685056720394583,
+          "duration_ns": 559988833,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685056149941416,
+          "end_ns": 1685056584919833,
+          "duration_ns": 434978417,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685056150018250,
+          "end_ns": 1685056673367375,
+          "duration_ns": 523349125,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685056149966458,
+          "end_ns": 1685056718525125,
+          "duration_ns": 568558667,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "privatized",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 279846583,
+      "elapsed_s": 0.279846583,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685056848335583,
+          "end_ns": 1685057088423916,
+          "duration_ns": 240088333,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685056842973250,
+          "end_ns": 1685057101658416,
+          "duration_ns": 258685166,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685056843183458,
+          "end_ns": 1685057099352625,
+          "duration_ns": 256169167,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685056843025541,
+          "end_ns": 1685057095635375,
+          "duration_ns": 252609834,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685056845609541,
+          "end_ns": 1685057080993041,
+          "duration_ns": 235383500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685056843069250,
+          "end_ns": 1685057122489125,
+          "duration_ns": 279419875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685056842946333,
+          "end_ns": 1685057122792916,
+          "duration_ns": 279846583,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685056843143500,
+          "end_ns": 1685057090177291,
+          "duration_ns": 247033791,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "unpadded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 658340541,
+      "elapsed_s": 0.658340541,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685057233213041,
+          "end_ns": 1685057833758250,
+          "duration_ns": 600545209,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685057233248750,
+          "end_ns": 1685057868569083,
+          "duration_ns": 635320333,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685057233321583,
+          "end_ns": 1685057818733083,
+          "duration_ns": 585411500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685057233538958,
+          "end_ns": 1685057891504916,
+          "duration_ns": 657965958,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 4,
+          "count": 5000000,
+          "start_ns": 1685057233164375,
+          "end_ns": 1685057817134916,
+          "duration_ns": 583970541,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 5,
+          "count": 5000000,
+          "start_ns": 1685057234265500,
+          "end_ns": 1685057823583000,
+          "duration_ns": 589317500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 6,
+          "count": 5000000,
+          "start_ns": 1685057245905916,
+          "end_ns": 1685057850190166,
+          "duration_ns": 604284250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 7,
+          "count": 5000000,
+          "start_ns": 1685057233180750,
+          "end_ns": 1685057848028625,
+          "duration_ns": 614847875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 2
+    },
+    {
+      "variant": "padded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 282100875,
+      "elapsed_s": 0.282100875,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685057976578916,
+          "end_ns": 1685058258679791,
+          "duration_ns": 282100875,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "privatized",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 109957000,
+      "elapsed_s": 0.109957,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685058336095625,
+          "end_ns": 1685058446052625,
+          "duration_ns": 109957000,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "unpadded",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 272894750,
+      "elapsed_s": 0.27289475,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685058509193666,
+          "end_ns": 1685058782088416,
+          "duration_ns": 272894750,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded64",
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 270454750,
+      "elapsed_s": 0.27045475,
+      "expected_total": 5000000,
+      "total_count": 5000000,
+      "counters": [
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685058843559333,
+          "end_ns": 1685059114014083,
+          "duration_ns": 270454750,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 277049750,
+      "elapsed_s": 0.27704975,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685059179909041,
+          "end_ns": 1685059456958791,
+          "duration_ns": 277049750,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685059180055833,
+          "end_ns": 1685059455387666,
+          "duration_ns": 275331833,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "privatized",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 105662459,
+      "elapsed_s": 0.105662459,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685059512543041,
+          "end_ns": 1685059617576500,
+          "duration_ns": 105033459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685059512456666,
+          "end_ns": 1685059618119125,
+          "duration_ns": 105662459,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "unpadded",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 293779125,
+      "elapsed_s": 0.293779125,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685059673071708,
+          "end_ns": 1685059965047500,
+          "duration_ns": 291975792,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685059673085916,
+          "end_ns": 1685059966850833,
+          "duration_ns": 293764917,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded64",
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 277797916,
+      "elapsed_s": 0.277797916,
+      "expected_total": 10000000,
+      "total_count": 10000000,
+      "counters": [
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685060020205000,
+          "end_ns": 1685060294294208,
+          "duration_ns": 274089208,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685060020231208,
+          "end_ns": 1685060298002916,
+          "duration_ns": 277771708,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 339581709,
+      "elapsed_s": 0.339581709,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685060375920000,
+          "end_ns": 1685060715486375,
+          "duration_ns": 339566375,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685060376022041,
+          "end_ns": 1685060714305500,
+          "duration_ns": 338283459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685060375990625,
+          "end_ns": 1685060715059416,
+          "duration_ns": 339068791,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685060375904666,
+          "end_ns": 1685060712271916,
+          "duration_ns": 336367250,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "privatized",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 115678083,
+      "elapsed_s": 0.115678083,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685060782224083,
+          "end_ns": 1685060895048750,
+          "duration_ns": 112824667,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685060782267708,
+          "end_ns": 1685060893715375,
+          "duration_ns": 111447667,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685060782245416,
+          "end_ns": 1685060897902166,
+          "duration_ns": 115656750,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685060782284541,
+          "end_ns": 1685060895519875,
+          "duration_ns": 113235334,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "unpadded",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 338876625,
+      "elapsed_s": 0.338876625,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685060954645083,
+          "end_ns": 1685061293488208,
+          "duration_ns": 338843125,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685060954618750,
+          "end_ns": 1685061291571083,
+          "duration_ns": 336952333,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685060954629791,
+          "end_ns": 1685061288230250,
+          "duration_ns": 333600459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685060954611583,
+          "end_ns": 1685061292896125,
+          "duration_ns": 338284542,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded64",
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 308477042,
+      "elapsed_s": 0.308477042,
+      "expected_total": 20000000,
+      "total_count": 20000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685061361978458,
+          "end_ns": 1685061662355833,
+          "duration_ns": 300377375,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685061361899666,
+          "end_ns": 1685061668597416,
+          "duration_ns": 306697750,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685061361964791,
+          "end_ns": 1685061667961666,
+          "duration_ns": 305996875,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685061361947500,
+          "end_ns": 1685061670376708,
+          "duration_ns": 308429208,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 569691000,
+      "elapsed_s": 0.569691,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685061773061625,
+          "end_ns": 1685062212037833,
+          "duration_ns": 438976208,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685061773358416,
+          "end_ns": 1685062237075833,
+          "duration_ns": 463717417,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685061773328333,
+          "end_ns": 1685062250037458,
+          "duration_ns": 476709125,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685061773039125,
+          "end_ns": 1685062234410041,
+          "duration_ns": 461370916,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685061773081458,
+          "end_ns": 1685062275227708,
+          "duration_ns": 502146250,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685061783044916,
+          "end_ns": 1685062342730125,
+          "duration_ns": 559685209,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685061773094833,
+          "end_ns": 1685062245657666,
+          "duration_ns": 472562833,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685061773299125,
+          "end_ns": 1685062255836958,
+          "duration_ns": 482537833,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "privatized",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 16,
+      "spacing_bytes": 128,
+      "alignment_bytes": 128,
+      "elapsed_ns": 261845917,
+      "elapsed_s": 0.261845917,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685062452144750,
+          "end_ns": 1685062640330208,
+          "duration_ns": 188185458,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685062452112125,
+          "end_ns": 1685062713823750,
+          "duration_ns": 261711625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685062455026916,
+          "end_ns": 1685062703508875,
+          "duration_ns": 248481959,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685062452083666,
+          "end_ns": 1685062667046791,
+          "duration_ns": 214963125,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 64,
+          "count": 5000000,
+          "start_ns": 1685062451977833,
+          "end_ns": 1685062663469541,
+          "duration_ns": 211491708,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 80,
+          "count": 5000000,
+          "start_ns": 1685062451994041,
+          "end_ns": 1685062680404583,
+          "duration_ns": 228410542,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 96,
+          "count": 5000000,
+          "start_ns": 1685062452006625,
+          "end_ns": 1685062666218583,
+          "duration_ns": 214211958,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 112,
+          "count": 5000000,
+          "start_ns": 1685062452053000,
+          "end_ns": 1685062688775916,
+          "duration_ns": 236722916,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "unpadded",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 1,
+      "spacing_bytes": 8,
+      "alignment_bytes": 128,
+      "elapsed_ns": 729064500,
+      "elapsed_s": 0.7290645,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685062813306166,
+          "end_ns": 1685063522751583,
+          "duration_ns": 709445417,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 1,
+          "count": 5000000,
+          "start_ns": 1685062813326958,
+          "end_ns": 1685063533948291,
+          "duration_ns": 720621333,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 2,
+          "count": 5000000,
+          "start_ns": 1685062814935791,
+          "end_ns": 1685063484241416,
+          "duration_ns": 669305625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 3,
+          "count": 5000000,
+          "start_ns": 1685062813272416,
+          "end_ns": 1685063531051708,
+          "duration_ns": 717779292,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 4,
+          "count": 5000000,
+          "start_ns": 1685062813244500,
+          "end_ns": 1685063504088583,
+          "duration_ns": 690844083,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 5,
+          "count": 5000000,
+          "start_ns": 1685062813257875,
+          "end_ns": 1685063542294375,
+          "duration_ns": 729036500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 6,
+          "count": 5000000,
+          "start_ns": 1685062813229875,
+          "end_ns": 1685063466692541,
+          "duration_ns": 653462666,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 7,
+          "count": 5000000,
+          "start_ns": 1685062813712250,
+          "end_ns": 1685063485950416,
+          "duration_ns": 672238166,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    },
+    {
+      "variant": "padded64",
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "stride_int64": 8,
+      "spacing_bytes": 64,
+      "alignment_bytes": 128,
+      "elapsed_ns": 587527792,
+      "elapsed_s": 0.587527792,
+      "expected_total": 40000000,
+      "total_count": 40000000,
+      "counters": [
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000,
+        5000000
+      ],
+      "worker_timings": [
+        {
+          "index": 0,
+          "count": 5000000,
+          "start_ns": 1685063673057750,
+          "end_ns": 1685064168486375,
+          "duration_ns": 495428625,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 8,
+          "count": 5000000,
+          "start_ns": 1685063672896791,
+          "end_ns": 1685064260388250,
+          "duration_ns": 587491459,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 16,
+          "count": 5000000,
+          "start_ns": 1685063673021500,
+          "end_ns": 1685064121900416,
+          "duration_ns": 448878916,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 24,
+          "count": 5000000,
+          "start_ns": 1685063674747750,
+          "end_ns": 1685064198270541,
+          "duration_ns": 523522791,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 32,
+          "count": 5000000,
+          "start_ns": 1685063672983208,
+          "end_ns": 1685064194131416,
+          "duration_ns": 521148208,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 40,
+          "count": 5000000,
+          "start_ns": 1685063672944041,
+          "end_ns": 1685064193503625,
+          "duration_ns": 520559584,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 48,
+          "count": 5000000,
+          "start_ns": 1685063672860458,
+          "end_ns": 1685064215722958,
+          "duration_ns": 542862500,
+          "alignment_remainder": 0
+        },
+        {
+          "index": 56,
+          "count": 5000000,
+          "start_ns": 1685063672874708,
+          "end_ns": 1685064199675791,
+          "duration_ns": 526801083,
+          "alignment_remainder": 0
+        }
+      ],
+      "trial": 3
+    }
+  ],
+  "all_counts_exact": true,
+  "summary": [
+    {
+      "p": 1,
+      "iterations_per_worker": 5000000,
+      "total_work": 5000000,
+      "t_unpadded_s": 0.27289475,
+      "s_unpadded": 1.0,
+      "e_unpadded": null,
+      "work_normalized_speedup_unpadded": 1.0,
+      "work_normalized_e_unpadded": null,
+      "t_padded64_s": 0.278561375,
+      "s_padded64": 1.0,
+      "e_padded64": null,
+      "work_normalized_speedup_padded64": 1.0,
+      "work_normalized_e_padded64": null,
+      "t_padded_s": 0.282100875,
+      "s_padded": 1.0,
+      "e_padded": null,
+      "work_normalized_speedup_padded": 1.0,
+      "work_normalized_e_padded": null,
+      "t_privatized_s": 0.10975825,
+      "s_privatized": 1.0,
+      "e_privatized": null,
+      "work_normalized_speedup_privatized": 1.0,
+      "work_normalized_e_privatized": null
+    },
+    {
+      "p": 2,
+      "iterations_per_worker": 5000000,
+      "total_work": 10000000,
+      "t_unpadded_s": 0.300062375,
+      "s_unpadded": 0.9094600747594563,
+      "e_unpadded": 1.1991069817209747,
+      "work_normalized_speedup_unpadded": 1.8189201495189127,
+      "work_normalized_e_unpadded": 0.09955349086048737,
+      "t_padded64_s": 0.274662,
+      "s_padded64": 1.014196994851854,
+      "e_padded64": 0.9720034767921435,
+      "work_normalized_speedup_padded64": 2.028393989703708,
+      "work_normalized_e_padded64": -0.013998261603928253,
+      "t_padded_s": 0.27704975,
+      "s_padded": 1.018231833813241,
+      "e_padded": 0.9641892284098732,
+      "work_normalized_speedup_padded": 2.036463667626482,
+      "work_normalized_e_padded": -0.0179053857950634,
+      "t_privatized_s": 0.105662459,
+      "s_privatized": 1.0387629725709866,
+      "e_privatized": 0.9253670498573001,
+      "work_normalized_speedup_privatized": 2.077525945141973,
+      "work_normalized_e_privatized": -0.03731647507134994
+    },
+    {
+      "p": 4,
+      "iterations_per_worker": 5000000,
+      "total_work": 20000000,
+      "t_unpadded_s": 0.338876625,
+      "s_unpadded": 0.805292339062926,
+      "e_unpadded": 1.3223800873169356,
+      "work_normalized_speedup_unpadded": 3.221169356251704,
+      "work_normalized_e_unpadded": 0.08059502182923388,
+      "t_padded64_s": 0.308477042,
+      "s_padded64": 0.9030214151236577,
+      "e_padded64": 1.14319126619762,
+      "work_normalized_speedup_padded64": 3.612085660494631,
+      "work_normalized_e_padded64": 0.03579781654940498,
+      "t_padded_s": 0.339581709,
+      "s_padded": 0.8307304767112764,
+      "e_padded": 1.2716798095716653,
+      "work_normalized_speedup_padded": 3.3229219068451057,
+      "work_normalized_e_padded": 0.0679199523929163,
+      "t_privatized_s": 0.126612125,
+      "s_privatized": 0.8668857741705228,
+      "e_privatized": 1.2047393552041266,
+      "work_normalized_speedup_privatized": 3.4675430966820913,
+      "work_normalized_e_privatized": 0.05118483880103164
+    },
+    {
+      "p": 8,
+      "iterations_per_worker": 5000000,
+      "total_work": 40000000,
+      "t_unpadded_s": 0.658340541,
+      "s_unpadded": 0.4145191325836943,
+      "e_unpadded": 2.614210150354931,
+      "work_normalized_speedup_unpadded": 3.3161530606695546,
+      "work_normalized_e_unpadded": 0.20177626879436636,
+      "t_padded64_s": 0.587527792,
+      "s_padded64": 0.4741245925605507,
+      "e_padded64": 2.267600278651082,
+      "work_normalized_speedup_padded64": 3.7929967404844054,
+      "work_normalized_e_padded64": 0.15845003483138528,
+      "t_padded_s": 0.570489208,
+      "s_padded": 0.49448941547725117,
+      "e_padded": 2.1683291173262558,
+      "work_normalized_speedup_padded": 3.9559153238180094,
+      "work_normalized_e_padded": 0.14604113966578197,
+      "t_privatized_s": 0.261845917,
+      "s_privatized": 0.41917113414451296,
+      "e_privatized": 2.5836119523719496,
+      "work_normalized_speedup_privatized": 3.3533690731561037,
+      "work_normalized_e_privatized": 0.1979514940464937
+    }
+  ]
+}

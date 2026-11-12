@@ -1,0 +1,5 @@
+workers,work_items_per_worker,seconds,sampled_cpu_busy_percent
+1,250000,0.071278,29.0
+2,250000,0.067333,100.0
+4,250000,0.079176,100.0
+8,250000,0.108406,100.0

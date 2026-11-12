@@ -1,0 +1,8 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+report/rendered/
+report/*_qa*/

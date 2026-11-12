@@ -1,0 +1,8 @@
+[LOCAL PASS] stride
+[LOCAL PASS] dense
+[LOCAL PASS] false_sharing
+[LOCAL PASS] scaling
+[LOCAL PASS] roofline
+[PROVIDED VERIFIER FAIL] exit=1; log=results/provided_verifier.log
+[LOCAL NUMERICAL AUDIT PASS] Manifest SHA-256: dcf6a909326340a5f31969dab81636ef19df38d831a67f335485ba36f21852c2
+Provided verifier status remains FAIL; see results/provided_verifier.log.

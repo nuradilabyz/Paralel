@@ -1,0 +1,296 @@
+{
+  "student": {
+    "name": "Abyz Nuradil",
+    "id": "230103188",
+    "lab_date": "01.10.2026"
+  },
+  "run_timestamp_utc": "2026-10-01T09:53:52.013087+00:00",
+  "mode": "full assigned workloads",
+  "hardware": {
+    "environment": "Automated Linux workspace; not the student laptop",
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+    "operating_system": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python_version": "3.12.14",
+    "numpy_version": "2.5.3",
+    "numba_version": "0.68.0",
+    "matplotlib_version": "3.11.2",
+    "logical_cpus_visible": 9,
+    "affinity_cpus": 9,
+    "cpu_quota_cores": 8.0,
+    "numba_max_threads": 9,
+    "threading_layer": "omp"
+  },
+  "methodology": {
+    "repetitions": 3,
+    "aggregation": "median",
+    "jit_compilation_timed": false,
+    "heat_initialization_timed": false,
+    "heat_time_includes": "300 Python dispatches and pointer swaps in full mode",
+    "mandelbrot_time_includes": "allocation and pixel computation",
+    "randomness": "Numba thread-local random streams; estimates vary per run",
+    "heat_throughput_formula": "grid_size^2 * steps / seconds / 1e6 (lab convention)"
+  },
+  "workloads": {
+    "monte_carlo_samples": 120000000,
+    "mandelbrot_height": 2500,
+    "mandelbrot_width": 2500,
+    "mandelbrot_max_iter": 1000,
+    "heat_grid_size": 1500,
+    "heat_steps": 300
+  },
+  "monte_carlo": [
+    {
+      "threads": 1,
+      "seconds": 2.1804377599999043,
+      "times_seconds": [
+        2.2014268000000357,
+        2.132854178999878,
+        2.1804377599999043
+      ],
+      "pi_estimates": [
+        3.1417752666666665,
+        3.1416562333333333,
+        3.1413147
+      ],
+      "speedup": 1.0,
+      "efficiency_percent": 100.0
+    },
+    {
+      "threads": 2,
+      "seconds": 1.451847526000165,
+      "times_seconds": [
+        1.5476277150000897,
+        1.451847526000165,
+        1.1645266689999971
+      ],
+      "pi_estimates": [
+        3.1415633666666665,
+        3.1416608333333333,
+        3.1413353666666666
+      ],
+      "speedup": 1.5018366053954735,
+      "efficiency_percent": 75.09183026977368
+    },
+    {
+      "threads": 4,
+      "seconds": 0.7770599660000244,
+      "times_seconds": [
+        0.8282436380000036,
+        0.7770599660000244,
+        0.7551955260000796
+      ],
+      "pi_estimates": [
+        3.1411822333333332,
+        3.141523933333333,
+        3.1416088666666666
+      ],
+      "speedup": 2.806009645849952,
+      "efficiency_percent": 70.1502411462488
+    },
+    {
+      "threads": 8,
+      "seconds": 0.4183361259999856,
+      "times_seconds": [
+        0.46671990599998026,
+        0.4183361259999856,
+        0.39577503700002126
+      ],
+      "pi_estimates": [
+        3.141793,
+        3.141793266666667,
+        3.1415940333333334
+      ],
+      "speedup": 5.2121670218841665,
+      "efficiency_percent": 65.15208777355208
+    },
+    {
+      "threads": 9,
+      "seconds": 0.3778363880001052,
+      "times_seconds": [
+        0.4051482320001014,
+        0.3778363880001052,
+        0.3237499580000076
+      ],
+      "pi_estimates": [
+        3.141548033333333,
+        3.1415542333333333,
+        3.141739266666667
+      ],
+      "speedup": 5.7708516946739845,
+      "efficiency_percent": 64.1205743852665
+    }
+  ],
+  "mandelbrot": [
+    {
+      "axis": "rows",
+      "threads": 9,
+      "seconds": 1.2727724310000212,
+      "times_seconds": [
+        1.2727724310000212,
+        1.2557150319998982,
+        1.3368586880001203
+      ]
+    },
+    {
+      "axis": "cols",
+      "threads": 9,
+      "seconds": 1.3008551820000775,
+      "times_seconds": [
+        1.2850289809998685,
+        1.3008551820000775,
+        1.3050404049999997
+      ]
+    }
+  ],
+  "heat": [
+    {
+      "precision": "float64",
+      "threads": 1,
+      "seconds": 0.4731713330002094,
+      "times_seconds": [
+        0.47944178100010504,
+        0.4723547020000751,
+        0.4731713330002094
+      ],
+      "megacells_per_second": 1426.5445789373323,
+      "two_array_megabytes": 36.0,
+      "speedup": 1.0,
+      "efficiency_percent": 100.0
+    },
+    {
+      "precision": "float64",
+      "threads": 2,
+      "seconds": 0.2407575040001575,
+      "times_seconds": [
+        0.2407575040001575,
+        0.24286666699981652,
+        0.20696969799996623
+      ],
+      "megacells_per_second": 2803.6509300227603,
+      "two_array_megabytes": 36.0,
+      "speedup": 1.9653440708535501,
+      "efficiency_percent": 98.2672035426775
+    },
+    {
+      "precision": "float64",
+      "threads": 4,
+      "seconds": 0.10702059200002623,
+      "times_seconds": [
+        0.12924756500001422,
+        0.10175184500008072,
+        0.10702059200002623
+      ],
+      "megacells_per_second": 6307.197403653257,
+      "two_array_megabytes": 36.0,
+      "speedup": 4.4213111155289955,
+      "efficiency_percent": 110.53277788822489
+    },
+    {
+      "precision": "float64",
+      "threads": 8,
+      "seconds": 0.08799712499990164,
+      "times_seconds": [
+        0.10196599400001105,
+        0.08799712499990164,
+        0.07560656300006485
+      ],
+      "megacells_per_second": 7670.705150887082,
+      "two_array_megabytes": 36.0,
+      "speedup": 5.377122638958242,
+      "efficiency_percent": 67.21403298697803
+    },
+    {
+      "precision": "float64",
+      "threads": 9,
+      "seconds": 0.08292198499998449,
+      "times_seconds": [
+        0.08292198499998449,
+        0.07769171699987965,
+        0.09170234799989885
+      ],
+      "megacells_per_second": 8140.181400627665,
+      "two_array_megabytes": 36.0,
+      "speedup": 5.7062229395533395,
+      "efficiency_percent": 63.40247710614821
+    },
+    {
+      "precision": "float32",
+      "threads": 1,
+      "seconds": 0.23450606899996274,
+      "times_seconds": [
+        0.24872230999994827,
+        0.23450606899996274,
+        0.2275948060000701
+      ],
+      "megacells_per_second": 2878.3903243037485,
+      "two_array_megabytes": 18.0,
+      "speedup": 1.0,
+      "efficiency_percent": 100.0
+    },
+    {
+      "precision": "float32",
+      "threads": 2,
+      "seconds": 0.15289647300005527,
+      "times_seconds": [
+        0.12447629899997992,
+        0.15289647300005527,
+        0.18607882000014797
+      ],
+      "megacells_per_second": 4414.751934792872,
+      "two_array_megabytes": 18.0,
+      "speedup": 1.533757217538157,
+      "efficiency_percent": 76.68786087690785
+    },
+    {
+      "precision": "float32",
+      "threads": 4,
+      "seconds": 0.11226640300014878,
+      "times_seconds": [
+        0.0659831180000765,
+        0.11615231399991899,
+        0.11226640300014878
+      ],
+      "megacells_per_second": 6012.484429550179,
+      "two_array_megabytes": 18.0,
+      "speedup": 2.0888356866626605,
+      "efficiency_percent": 52.220892166566514
+    },
+    {
+      "precision": "float32",
+      "threads": 8,
+      "seconds": 0.0742697059999955,
+      "times_seconds": [
+        0.06246154599989495,
+        0.07542498800012254,
+        0.0742697059999955
+      ],
+      "megacells_per_second": 9088.496997686256,
+      "two_array_megabytes": 18.0,
+      "speedup": 3.157492894882026,
+      "efficiency_percent": 39.46866118602532
+    },
+    {
+      "precision": "float32",
+      "threads": 9,
+      "seconds": 0.06718389800016666,
+      "times_seconds": [
+        0.060588240999777554,
+        0.06718389800016666,
+        0.07174961999999141
+      ],
+      "megacells_per_second": 10047.050261929213,
+      "two_array_megabytes": 18.0,
+      "speedup": 3.4905100177334307,
+      "efficiency_percent": 38.78344464148256
+    }
+  ],
+  "validation": {
+    "mandelbrot_rows_equal_cols": true,
+    "monte_carlo_estimates_plausible": true,
+    "heat_thread_counts_identical_within_precision": true,
+    "heat_boundaries_preserved": true,
+    "heat_finite_and_in_range": true,
+    "float32_matches_float64_within_tolerance": true,
+    "heat_max_absolute_precision_difference_celsius": 1.5410491130296577e-05
+  }
+}

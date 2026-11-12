@@ -1,0 +1,4 @@
+============================================================
+CS482 Parallel Computing: Automated Practicum Verifier
+============================================================
+[[91mFAIL[0m] Milestone 0 (Host & Salt): Expected cache_line_bytes == 64, got 128
