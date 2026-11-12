@@ -1,0 +1,5 @@
+student_id: 230103188
+cpu_count: 8
+avg_latency_ns: 49.762708
+avg_latency_ms: 4.9762708000000006e-05
+verify_tag: VERIFY_HASH [PHASE0]: A5761E3FC02D2920 (P_log=8)

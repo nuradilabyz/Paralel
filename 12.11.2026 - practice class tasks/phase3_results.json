@@ -1,0 +1,32 @@
+{
+  "student_id": 230103188,
+  "Pphys": 8,
+  "Plog": 8,
+  "dram_bandwidth_gbps": 59.09311880638862,
+  "dram_bandwidth_time_ms": 2.271292,
+  "compute_ceiling_gflops": 1.0628902577345676,
+  "compute_ceiling_time_ms": 451.598833,
+  "ridge_point_I_star": 0.017986700976419905,
+  "N": 128,
+  "gemm_variant1_gflops": 0.00761905142509668,
+  "gemm_variant1_time_ms": 550.502125,
+  "gemm_variant2_gflops": 0.008457210080378282,
+  "gemm_variant2_time_ms": 495.944166,
+  "gemm_variant3_results": {
+    "8": {
+      "time_ms": 436.678375,
+      "gflops": 0.009605018796728829
+    },
+    "16": {
+      "time_ms": 394.486625,
+      "gflops": 0.010632309777296
+    },
+    "32": {
+      "time_ms": 319.980042,
+      "gflops": 0.013108017530668366
+    }
+  },
+  "best_BS": 32,
+  "best_gflops": 0.013108017530668366,
+  "verify_tag": "VERIFY_HASH [PHASE3]: 51672D4221702745 (P_log=8)"
+}
