@@ -1,0 +1,18 @@
+PHASE 0 RESULTS
+======================================================================
+
+Student ID: 230103188
+
+HARDWARE TOPOLOGY
+----------------------------------------------------------------------
+CPU Model String                    Apple M2
+Physical Cores (Pphys)              8
+Logical Threads (Plog)              8
+L1 Data Cache (per core)            65536
+L2 Cache Size                       4194304
+L3 Cache Size (Shared)              Unknown
+Cache Line Size (Lbytes)            128
+Python Version & OS                 3.13.7 / Darwin 25.5.0
+
+TIMER NOISE FLOOR
+----------------------------------------------------------------------
